@@ -1,0 +1,26 @@
+Status
+    This module is production ready.
+
+Synopsis
+
+    The module block current request(but can concurrently deal other request), and send request data(header,body,client_ip) to remote server. Remote server resposing 's' means stoping the request and reposing 501 to client, if not, continue handle the request by next handle phases.
+    The module can be used to co-operate with waf(Web Application Firewall. anti Xss & sql Injection & CC attack ...) server, statistics server and so on.
+
+How?
+    #an example for communicting the remote server
+    1, nginx's conf
+    http {
+        remotesrv_module on;  #on|off
+        remotesrv_ip 127.0.0.1;
+        remotesrv_port 8888;
+        remotesrv_timeout 5000; #ms
+    }
+
+    2, remote server
+    netcat -u -l -s 127.0.0.1 -p 8888
+
+    3, client
+    curl http://127.0.0.1
+
+    4, remote server
+    type s or other character in netcat in under five seconds

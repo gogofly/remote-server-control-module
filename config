@@ -1,0 +1,15 @@
+ngx_addon_name="ngx_http_remote_srv_control_module"
+
+HTTP_MODULES="$HTTP_MODULES \
+		ngx_http_remote_srv_control_module"
+
+NGX_ADDON_SRCS="$NGX_ADDON_SRCS \
+        $ngx_addon_dir/src/network.c \
+		$ngx_addon_dir/src/ngx_http_remote_srv_control_module.c  "
+
+NGX_ADDON_DEPS="$NGX_ADDON_DEPS \
+        $ngx_addon_dir/src/ngx_http_remote_srv_control_module.h \
+        $ngx_addon_dir/src/network.h "
+
+#CORE_LIBS="$CORE_LIBS `/usr/local/mysql/bin/mysql_config --libs`"
+CFLAGS="$CFLAGS -O0 "
